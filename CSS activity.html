@@ -1,20 +1,129 @@
-<html> 
+<!DOCTYPE html>
+<title>hehehehehe</title>
+<html lang="en">
 <head>
-     <title>CSS ACTIVITY PAGE 1</title>
-<head>
-  <body style="background-color:tan">
-<h1 align="center"> GAMEZONE</h1>
-<center>
-  <img src="HEHE.png" heigt=250 width=250>
-</center>
-<br>
-<p align="center">GameZone Computer Shop is a store that specializes in selling computers and gaming equipment. They offer a wide range of products, including desktops, laptops, and accessories like keyboards and mouse.</p>
-<p align="center">In addition to selling hardware, GameZone provides computer stations where customers can play online games. These stations are equipped with high-speed internet and powerful computers to ensure a smooth gaming experience.</p>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <style>
+    :root {
+      --bg: #f8bbd0;       /* light pink */
+      --card: #fce4ec;     /* pale pink */
+      --text: #4a4a4a;     /* dark gray for contrast */
+      --accent: #ef4444;   /* red-500 */
+      --accent-2: #f87171; /* red-400 */
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 50% -20%, #f8bbd0 0%, var(--bg) 50%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: bgMove 6s infinite alternate ease-in-out;
+    }
 
-<p align="center">The shop also offers computer repair services. It is designed to be a comfortable place for gamers and tech enthusiasts to enjoy their hobbies and get the quality equipment they need.</p>
+    @keyframes bgMove {
+      0% { background-position: 50% -20%; }
+      100% { background-position: 50% 20%; }
+    }
 
-  <a href="page 2.html"><h5 align="right">NEXT PAGE</h5></a>
- 
-  </body>
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 2.5rem 2rem;
+      width: min(92vw, 500px);
+      border-radius: 1.25rem;
+      box-shadow: 0 0 20px rgba(255,192,203,0.6);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(255,182,193,0.8);
+    }
 
+    h1 { margin: 0 0 1rem; font-size: 1.5rem; font-weight: 700; letter-spacing: .2px; }
+
+    .heart-btn {
+      appearance: none;
+      border: none;
+      background: radial-gradient(60% 60% at 50% 35%, var(--accent-2), var(--accent));
+      color: white;
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: 60px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
+      margin: auto;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .heart-btn:hover { transform: scale(1.1); }
+    .heart-btn:active { transform: scale(0.95); }
+
+    .pulse { animation: pulse 800ms ease; }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.3) rotate(10deg); }
+      100% { transform: scale(1); }
+    }
+
+    .msg {
+      margin-top: 1.25rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: .3px;
+      opacity: 0;
+      transform: translateY(10px) scale(0.8);
+      transition: opacity .5s ease, transform .5s ease;
+      color: #d81b60;
+      text-shadow: 0 0 10px rgba(216,27,96,0.5);
+    }
+    .msg.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Click the Heart</h1>
+    <button class="heart-btn" id="heartBtn" aria-label="Click heart to show message" title="Click me">
+      ❤
+    </button>
+    <div id="msg" class="msg" role="status" aria-live="polite"></div>
+  </div>
+
+  <script>
+    const heart = document.getElementById('heartBtn');
+    const msg = document.getElementById('msg');
+
+    function toggleMessage() {
+      heart.classList.remove('pulse');
+      void heart.offsetWidth; // restart animation
+      heart.classList.add('pulse');
+
+      if (msg.classList.contains('show')) {
+        msg.classList.remove('show');
+        msg.textContent = '';
+      } else {
+        msg.textContent = 'Goodluckkkk poo💙☺️';
+        msg.classList.add('show');
+      }
+    }
+
+    heart.addEventListener('click', toggleMessage);
+  </script>
+</body>
 </html>
